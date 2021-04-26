@@ -27,7 +27,7 @@ const questions = [
     },
     {
         type: 'input',
-        message: 'Enter title',
+        message: 'Enter job title',
         name: 'title',
     },
     {
