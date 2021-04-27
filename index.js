@@ -45,6 +45,15 @@ const questions = [
         type: 'input',
         message: 'Enter email address?',
         name: 'email',
+        // validation for email - ^\S+@\S+$ - catches the most obvious syntax errors
+        // https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript
+        validate: (response) => {
+            const emailValid = response.match(/\S+@\S+\.\S+/);
+            if (emailValid) {
+                return true;
+            } else
+            return 'Invalid email address. Please enter a valid email address.'
+        }
     },
     {
         type: 'input',
@@ -64,10 +73,11 @@ const questions = [
 
 ];
 
-
+// Will need to split up since different employee types have different questions??
 // Function to fire up Inquirer and populate with the questions array
 const promptUser = () => {
-    return inquirer.prompt(questions)
+    console.log('Welcome! Let us get started building your team!');
+    return inquirer.prompt(questions);
 }
 
 
