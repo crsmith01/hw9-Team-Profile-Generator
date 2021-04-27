@@ -2,6 +2,10 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 
+const Manager = require('./lib/Manager');
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
+
 // Function to write README file
 const writeToFile = (userInput) => {
     // Writes output of user's answers to a index.html file
