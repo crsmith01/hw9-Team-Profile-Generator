@@ -30,6 +30,13 @@ const questions = [
         type: 'input',
         message: 'Enter name',
         name: 'name',
+        // Validation so user must enter a name for employee
+        validate: (response) => {
+            if (response !== '') {
+                return true;
+            } else
+            return 'You must enter a name.';
+        }
     },
     {
         type: 'input',
