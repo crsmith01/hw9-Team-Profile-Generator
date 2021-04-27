@@ -1,7 +1,7 @@
 // Change to make it html 
 // Add sections for what type of employee
 // (Arrow) function to dynamically create the README file with template literal, inserting user responses from the prompts in Inquirer
-const generateMarkdown = (responses) => {
+const generateHTML = (responses) => {
     // Destructuring the user's responses (makes drier code in the template literal section) (from activities 25&26 in week 9)
     const { project, description, dependencies, repo, license, contributing, test, email, username } = responses;
   

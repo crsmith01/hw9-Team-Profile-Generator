@@ -10,8 +10,9 @@ This is a Node.js command-line application that takes in information about emplo
 2. [User Stort](#User-Story)
 3. [Acceptance Criteria](#Acceptance-Criteria)
 4. [Mock Up](#Mock-Up)
-5. [Contact](#Contact)
-6. [License](#License)
+5. [Test](#Tests)
+6. [Contact](#Contact)
+7. [License](#License)
 
 
 ## Technologies Used
@@ -19,8 +20,8 @@ This is a Node.js command-line application that takes in information about emplo
 1. JavaScript
 2. Node
 3. Inquirer
-4. Bootstrap?????
-5. HTML????
+4. Bootstrap
+5. HTML
 ```
 
 
@@ -59,6 +60,9 @@ GIVEN a command-line application that accepts user input:
 The following image shows a mock-up of the generated HTML’s appearance and functionality:
 
 ![HTML webpage titled “My Team” features five boxes listing employee names, titles, and other key info.](./______________)
+
+## Tests
+Tests were written with jest. To run tests, enter the following in your command-line: npm run test
 
 ## Contact
 If you have any questions about the repo, contact me at [crsmith01](https://github.com/crsmith01).

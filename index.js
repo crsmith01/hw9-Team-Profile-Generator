@@ -6,6 +6,8 @@ const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 
+const generateHTML = require('./generateHTML');
+
 // Function to write README file
 const writeToFile = (userInput) => {
     // Writes output of user's answers to a index.html file
@@ -70,13 +72,13 @@ const promptUser = () => {
 
 
 // Function to initialize the app.
-// const init = () => {
-//   promptUser()
-//       .then((userAnswers) => {
-//           const markdown = generateMarkdown.generateMarkdown(userAnswers)
-//           writeToFile(markdown)
-//       })
-// };
+const init = () => {
+  promptUser()
+      .then((userAnswers) => {
+          const markdown = generateHTML.generateHTML(userAnswers)
+          writeToFile(markdown)
+      })
+};
 
 
 // Function call to initialize the app
