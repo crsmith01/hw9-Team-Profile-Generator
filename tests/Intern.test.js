@@ -1,12 +1,6 @@
 // Import Intern class
 const Intern = require('../lib/Intern');
 
-// describe('', () => {
-//     it('', () => {
-//         expect(new Employee().);
-//     })
-// });
-
 test("Can set school name  via constructor", () => {
     const testValue = "William & Mary";
     const e = new Intern("Foo", 1, "test@test.com", testValue);

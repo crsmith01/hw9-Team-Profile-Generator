@@ -1,11 +1,5 @@
 // Import Manager class
 const Manager = require('../lib/Manager');
-
-// describe('', () => {
-//     it('', () => {
-//         expect(new Employee().);
-//     })
-// });
   
 test("Can set office number via constructor", () => {
     // should this be a string of just a number?

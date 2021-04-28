@@ -46,7 +46,7 @@ const managerBuild = () => {
             },
             {
                 type: 'input',
-                message: 'Enter job title',
+                message: 'Enter job title',s
                 name: 'title',
             },
             {
