@@ -35,6 +35,8 @@ const managerBuild = () => {
                 message: 'Enter employee name',
                 name: 'name',
                 // Validation so user must enter a name for employee
+                // from npm docs: "validate: (Function) Receive the user input and answers hash. Should return true if the value is valid, and an error message (String) otherwise. If false is returned, a default error message is provided.""
+                // on format and testing validationin Inquirer: https://stackoverflow.com/questions/57321266/how-to-test-inquirer-validation
                 validate: (response) => {
                     if (response !== '') {
                         return true;
