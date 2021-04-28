@@ -18,10 +18,11 @@ This is a Node.js command-line application that takes in information about emplo
 ## Technologies Used
 ```
 1. JavaScript
-2. Node
+2. Node.js
 3. Inquirer
 4. Bootstrap
 5. HTML
+6. Jest
 ```
 
 
