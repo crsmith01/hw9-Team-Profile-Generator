@@ -17,6 +17,46 @@ const writeToFile = (userInput) => {
     error ? console.log('Error! Something went wrong.') : console.log('Success! Your html file has been created.'));
 };
 
+
+const teamArray = [
+    `<!DOCTYPE html>
+    <html lang="en-US">
+    <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+      <link rel = stylsheet href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+      <script
+        src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+        crossorigin="anonymous">
+      </script>
+      <title>My Team</title>
+    </head>
+    <body>
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4 d-flex justify-content-center text-warning">My Team</h1>
+        </div>
+      </div>
+      <section class="row justify-content-around">
+
+
+            // insert team here
+            {{ team }}   
+      
+      
+      </section>
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>  
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script> 
+      </script>
+     </body>
+     </html>
+     `
+
+    
+]
+
 // Remember to come back and put these funcitons inside another function so that it keeps running until the whole team is built
 
 // Array of questions about Manager for user to answer in Inquirer
@@ -106,16 +146,16 @@ const buildRemainingTeam = () => {
         .then((response) => {
         // 3 options - buildEngineer, buildIntern, or finishTeamBuild - depending on user response
             if(response.buildTeamType === 'Engineer') {
-                buildEngineer();
+                engineerBuild();
             } else if (response.buildTeamType === 'Intern') {
-                buildIntern();
+                internBuild();
             } else {
                 finishTeamBuild();
             }
         });
     };
 // Build an enginner if user selects Engineer in buildRemainingTeam function
-const buildEngineer = () => {
+const engineerBuild = () => {
     inquirer
         .prompt([
             {
@@ -178,7 +218,7 @@ const buildEngineer = () => {
 
 
 // Build an intern if user selects intern in buildRemainingTeam function
-const buildIntern = () => {
+const internBuild = () => {
     inquirer
         .prompt([
             {
