@@ -151,7 +151,7 @@ const beginningHTML = () => {
       fs.writeFile('./output/myteam.html', html, function(err) {
         // Ternary operator to account for errors and successes
         err ? console.log('Error! Something went wrong.') : console.log('Success! Your starting html file has been created.'));
-      });
+      };
 
 
 // Function to add middle part of html = emplyee cards
@@ -166,237 +166,95 @@ const addEmployeeCardsHTML = (employee) => {
             const officeNumber = employee.getOfficeNumber();
             // go back up and add title prompt if not there already
             const title = employee.getTitle();
-            cardHTML =  `     <!-- Manager -->
+            cardHTML =  `
             <div class="col-12 col-sm-6 col-lg-4 mb-3">
               <div class="card employee-card text-danger">
                 <div class="card-header">
                   <h2 class="card-title">${name}</h5>
-                  <!-- <h3 class="card-title">Manager<i class="fa fa-address-card-o"></i></h3>  -->
+                //   Is this fa working???
+                  <h3 class="card-title">Manager<i class="fa fa-address-card-o"></i></h3>
                   <h3 class="card-title">${type}<i class="fa fa-address-card-o"></i></h3> 
                 </div>
                 <div class="card-body">
                   <ul class="list-group">
                       <li class="list-group-item">Title: ${title}</li>
                       <li class="list-group-item">ID: ${id}</li>
-                      <li class="list-group-item">Email: <a href="${email]">${email}</a></li>
+                      <li class="list-group-item">Email: <a href="${email}">${email}</a></lli>
                       <li class="list-group-item">Office Number: ${office}</a></li>
                   </ul>
                 </div>
               </div>
-            </div>````
+             </div>
+             <section class="row justify-content-around">
+             `;
 
         } else if (role === 'Engineer') {
             const github = employee.getGithub();
             const title = employee.getTitle();
+            cardHTML = `
+            <div class="col-12 col-sm-6 col-lg-4 mb-3">
+            <div class="card employee-card text-primary">
+              <div class="card-header">
+                <h2 class="card-title">${name}</h5>
+                <!-- <h3 class="card-title">Engineer<i class="fa fa-cogs"></i></h3>  -->
+                <h3 class="card-title">${type}<i class="fa fa-cogs"></i></h3> 
+              </div>
+              <div class="card-body">
+                <ul class="list-group">
+                    <li class="list-group-item">Title: ${title}</li>
+                    <li class="list-group-item">ID: ${id}</li>
+                    <li class="list-group-item">Email: <a href="${email}">${email}</a></li>
+                    <li class="list-group-item">GitHub: <a href="${github}" target="_blank" rel="noopener noreferrer">${github}</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>`;
+        } else if (role === 'Intern') {
+            const school = employee.getSchool();
+            const title = employee.getTitle();
+            cardHTML = `
+            <div class="col-12 col-sm-6 col-lg-4 mb-3">
+            <div class="card employee-card text-success">
+              <div class="card-header">
+                <h2 class="card-title">${name}</h5>
+                <!-- <h3 class="card-title">Intern<i class="fa fa-graduation-cap"></i></h3>  -->
+                <h3 class="card-title">${type}<i class="fa fa-graduation-cap"></i></h3> 
+              </div>
+              <div class="card-body">
+                <ul class="list-group">
+                    <li class="list-group-item">Title: ${title}</li>
+                    <li class="list-group-item">ID: ${id}</li>
+                    <li class="list-group-item">Email: <a href="${email}">${email}</a></li>
+                    <li class="list-group-item">School: ${school}</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>`;
         }
-    })
+        fs.writeFile('./output/myteam.html', html, function(err) {
+            // Ternary operator to account for errors and successes
+            err ? console.log('Error! Something went wrong.') : console.log('Success! The employee section of your html file has been created.'));
+          };    
+        })
 
 }
 
 
-      <section class="row justify-content-around">
-
-
-            // insert team here
-            {{ team }}   
-      
-      
+const closingHTML = () => {
+    const endingHTML = `
       </section>
       <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>  
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script> 
       </script>
      </body>
      </html>
-     `
-
-    
-]
-
-// Remember to come back and put these funcitons inside another function so that it keeps running until the whole team is built
-
-// Array of questions about Manager for user to answer in Inquirer
-
-            },
-            {
-                type: 'input',
-                message: 'Enter office number',
-                name: 'office',
-            },
-        ])
-        .then((responses)) => {
-            // Create a new Manager object with the responses from the above prompts
-            const manager = new Manager (
-                // Do these need more unique names - like specific to the manager??
-                responses.name,
-                responses.title,
-                responses.id,
-                responses.email,
-                responses.officeNumber
-            );
-            // Figure out what to do / where to put this newly created Manager object
-            // Move on to run the buildRemainingTeam funciton to build the rest of teh team
-            buildRemainingTeam();
-        } 
+     `; 
+    //  Append the closing HTML to myteam.html
+    fs.appendFile('./output/myteam.html', html, function(err) {
+    // Ternary operator to account for errors and successes
+    err ? console.log('Error! Something went wrong.') : console.log('Success! The html file has been completed.'));
+    };   
 };
-
-const buildRemainingTeam = () => {
-    console.log('Now that you have a Manager, we can build the rest of your team!');
-    inquirer
-        .prompt([
-            {
-                type: 'list',
-                message: 'What type of employee would you like to build?',
-                name: 'buildTeamType',
-                choices: ['Engineer', 'Intern', 'That is everyone on the team!'],
-            },
-        ])
-        // does this need to be something differnet - other than responses?? - will it mix up the system???
-        // maybe use input, userInput, userResponses, teamInput, etc.
-        .then((response) => {
-        // 3 options - buildEngineer, buildIntern, or finishTeamBuild - depending on user response
-            if(response.buildTeamType === 'Engineer') {
-                engineerBuild();
-            } else if (response.buildTeamType === 'Intern') {
-                internBuild();
-            } else {
-                finishTeamBuild();
-            }
-        });
-    };
-// Build an enginner if user selects Engineer in buildRemainingTeam function
-const engineerBuild = () => {
-    inquirer
-        .prompt([
-            {
-                type: 'input',
-                message: 'Enter employee name',
-                name: 'name',
-                // Validation so user must enter a name for employee
-                validate: (response) => {
-                    if (response !== '') {
-                        return true;
-                    } else
-                    return 'You must enter a name.';
-                }
-            },
-            {
-                type: 'input',
-                message: 'Enter job title',
-                name: 'title',
-            },
-            {
-                type: 'input',
-                message: 'Enter employe ID number',
-                name: 'id',
-            },
-            {
-                type: 'input',
-                message: 'Enter email address?',
-                name: 'email',
-                // Validation for email - ^\S+@\S+$ - catches the most obvious syntax errors
-                // https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript
-                validate: (response) => {
-                    const emailValid = response.match(/\S+@\S+\.\S+/);
-                    if (emailValid) {
-                        return true;
-                    } else
-                    return 'Invalid email address. Please enter a valid email address.'
-                }
-            },
-            {
-                type: 'input',
-                message: 'Enter GitHub username',
-                name: 'github',
-            },
-        ])
-        // Create a new Engineer object based on these responses
-        .then((responses) => {
-            const engineer = new Engineer(
-                responses.name,
-                responses.title,
-                responses.id,
-                responses.email,
-                responses.github
-            );
-            // Figure out what to do / where to put this newly created Manager object
-            // Move on to run the buildRemainingTeam funciton to build the rest of teh team
-            buildRemainingTeam();
-        });
-    }
-
-
-
-// Build an intern if user selects intern in buildRemainingTeam function
-const internBuild = () => {
-    inquirer
-        .prompt([
-            {
-                type: 'input',
-                message: 'Enter employee name',
-                name: 'name',
-                // Validation so user must enter a name for employee
-                validate: (response) => {
-                    if (response !== '') {
-                        return true;
-                    } else
-                    return 'You must enter a name.';
-                }
-            },
-            {
-                type: 'input',
-                message: 'Enter job title',
-                name: 'title',
-            },
-            {
-                type: 'input',
-                message: 'Enter employe ID number',
-                name: 'id',
-            },
-            {
-                type: 'input',
-                message: 'Enter email address?',
-                name: 'email',
-                // Validation for email - ^\S+@\S+$ - catches the most obvious syntax errors
-                // https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript
-                validate: (response) => {
-                    const emailValid = response.match(/\S+@\S+\.\S+/);
-                    if (emailValid) {
-                        return true;
-                    } else
-                    return 'Invalid email address. Please enter a valid email address.'
-                }
-            },
-            {
-                type: 'input',
-                message: 'Enter school',
-                name: 'school',
-                // Validation for school - must enter a school name
-                validate: (response) => {
-                    if (response !== '') {
-                        return true;
-                    } else
-                    return 'You must enter a school name.';
-                }
-            },
-        ])
-        // Create a new Intern object based on these responses
-        .then((responses) => {
-            const intern = new Intern(
-                responses.name,
-                responses.title,
-                responses.id,
-                responses.email,
-                responses.school
-            );
-            // Figure out what to do / where to put this newly created Manager object
-            // Move on to run the buildRemainingTeam funciton to build the rest of teh team
-            buildRemainingTeam();
-        });
-])
-
-};
-
-
 
 
 
@@ -405,22 +263,22 @@ const internBuild = () => {
 // Below = all if it needs to be reorganized
 
 
-// Will need to split up since different employee types have different questions??
-// Function to fire up Inquirer and populate with the questions array
-const promptUserManager = () => {
-    console.log('Welcome! Let us get started building your team!');
-    return inquirer.prompt(managerBuild);
-}
+// // Will need to split up since different employee types have different questions??
+// // Function to fire up Inquirer and populate with the questions array
+// const promptUserManager = () => {
+//     console.log('Welcome! Let us get started building your team!');
+//     return inquirer.prompt(managerBuild);
+// }
 
 
-// Function to initialize the app.
-const init = () => {
-  promptUserManager()
-      .then((userAnswers) => {
-          const markdown = generateHTML.generateHTML(userAnswers)
-          writeToFile(markdown)
-      })
-};
+// // Function to initialize the app.
+// const init = () => {
+//   promptUserManager()
+//       .then((userAnswers) => {
+//           const markdown = generateHTML.generateHTML(userAnswers)
+//           writeToFile(markdown)
+//       })
+// };
 
 
 // Function call to initialize the app
