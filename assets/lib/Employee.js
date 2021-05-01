@@ -1,4 +1,4 @@
-// Create Employee class - the main class
+// Create Employee class - the main class from which the subclasses (Intern, Engineer, and Manager) extend
 class Employee {
     constructor(name, id, email) {
         this.name = name;
@@ -26,6 +26,11 @@ class Employee {
         return `Employee`;
     }
 };
+// const employee1 = new Employee ('Danny S', '24601', 'dskinner@gmail.com');
+// console.log(employee1.getName());
+// console.log(employee1.getID());
+// console.log(employee1.getEmail());
+// console.log(employee1.getRole());
 
 // Explort Employee class for use in other files
 module.exports = Employee;

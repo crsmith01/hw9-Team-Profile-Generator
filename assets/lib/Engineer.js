@@ -15,6 +15,11 @@ class Engineer extends Employee  {
         return this.github;
     }
 
+    getTitle() {
+        // returns engineer's full job title
+        return this.title;
+    }
+
     getRole() {
         // override to return 'Engineer'
         return 'Engineer';
@@ -22,6 +27,13 @@ class Engineer extends Employee  {
 
     }
 };
+
+// const employee1 = new Engineer ('Danny S', '24601', 'dskinner@gmail.com', 'Junior Engineer', 'dskinner01');
+// console.log(employee1.getRole());
+// // logs role as Employee AND Engineer
+// console.log(employee1.getTitle());
+// console.log(employee1.getGithub());
+
 
 // Export Engineer class for use in other files
 module.exports = Engineer;

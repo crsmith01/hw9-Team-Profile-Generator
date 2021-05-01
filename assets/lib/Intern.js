@@ -11,15 +11,25 @@ class Intern extends Employee  {
     }
 
     getSchool() {
+        // returns inter's school name
         return this.school;
+    }
+
+    getTitle() {
+        // returns intern's full job title
+        return this.title;
     }
 
     getRole() {
         // override to return 'Intern'
         return 'Intern';
-        // or could do return this.title; but not making it return this.title since title could be more specific than overall role of intern (i.e. Arts Administration Intern)
+        // or could do return this.title?; but not making it return this.title since title could be more specific than overall role of intern (i.e. Arts Administration Intern)
     }
-}
+};
+// const employee1 = new Intern ('Danny S', '24601', 'dskinner@gmail.com', 'Engineering Intern', 'Elon');
+// console.log(employee1.getRole());
+// console.log(employee1.getTitle());
+// console.log(employee1.getSchool());
 
 // Export Intern class for use in other files
 module.exports = Intern;

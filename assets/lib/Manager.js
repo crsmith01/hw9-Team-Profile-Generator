@@ -14,6 +14,11 @@ class Manager extends Employee  {
         return this.officeNumber;
     }    
 
+    getTitle() {
+        // returns managers's full job title
+        return this.title;
+    }
+
     getRole() {
         // override to return 'Manager'
         return 'Manager';
@@ -21,6 +26,10 @@ class Manager extends Employee  {
     }
 };
 
+// const employee1 = new Manager ('Danny S', '24601', 'dskinner@gmail.com', 'Engineering Team Manager', '394');
+// console.log(employee1.getRole());
+// console.log(employee1.getTitle());
+// console.log(employee1.getOfficeNumber());
 
 // Explort Manager class for use in other files
 module.exports = Manager;
