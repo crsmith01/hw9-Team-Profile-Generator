@@ -251,13 +251,13 @@ const closingHTML = () => {
      fs.appendFile('./output/myteam.html', endingHTML, function (err) {
       if (err) {
           return console.log(err);
-      };
+      });
 
-    //  Append the closing HTML to myteam.html
-    fs.appendFile('./output/myteam.html', endingHTML, function(err) {
-    // Ternary operator to account for errors and successes
-    err ? console.log('Error! Something went wrong.') : console.log('Success! The html file has been completed.');
-    });   
+    // //  Append the closing HTML to myteam.html
+    // fs.appendFile('./output/myteam.html', endingHTML, function(err) {
+    // // Ternary operator to account for errors and successes
+    // err ? console.log('Error! Something went wrong.') : console.log('Success! The html file has been completed.');
+    // });   
 }
 
 
@@ -268,4 +268,4 @@ const init = () => {
 };
 
 // Function call to initialize the app
-init()
+init();

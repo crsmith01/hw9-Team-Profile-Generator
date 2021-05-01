@@ -29,9 +29,9 @@ This is a Node.js command-line application that takes in information about emplo
 ## User Story
 
 ```md
-AS A manager
+AS A manager,
 I WANT to generate a webpage that displays my team's basic info
-SO THAT I have quick access to their emails and GitHub profiles
+SO THAT I have quick access to their emails and GitHub profiles.
 ```
 
 ## Acceptance Criteria
