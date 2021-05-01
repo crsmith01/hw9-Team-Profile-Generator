@@ -31,6 +31,8 @@ class Employee {
 // console.log(employee1.getID());
 // console.log(employee1.getEmail());
 // console.log(employee1.getRole());
+// console.log(employee1);
+
 
 // Explort Employee class for use in other files
 module.exports = Employee;

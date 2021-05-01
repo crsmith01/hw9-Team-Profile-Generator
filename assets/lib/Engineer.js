@@ -33,6 +33,7 @@ class Engineer extends Employee  {
 // // logs role as Employee AND Engineer
 // console.log(employee1.getTitle());
 // console.log(employee1.getGithub());
+// console.log(employee1);
 
 
 // Export Engineer class for use in other files

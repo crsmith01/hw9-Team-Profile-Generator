@@ -30,6 +30,8 @@ class Manager extends Employee  {
 // console.log(employee1.getRole());
 // console.log(employee1.getTitle());
 // console.log(employee1.getOfficeNumber());
+// console.log(employee1);
+
 
 // Explort Manager class for use in other files
 module.exports = Manager;
