@@ -2,29 +2,18 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 
-const Employee = require('./lib/Employee');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 
-const generateHTML = require('./generateHTML');
 
-// Function to write html file
-const writeToFile = (userInput) => {
-    // Writes output of user's answers to a index.html file
-    // ***Figure out how to create an output folder in which to put index.html 
-    fs.writeFile('index.html', userInput, (error) =>
-    // Ternary operator to account for errors and successes
-    error ? console.log('Error! Something went wrong.') : console.log('Success! Your html file has been created.'));
-};
-
-// 
+// Empty team array to start, will populate with new employee data when pushed
 const teamArray = [];
 
 // Function to initialize app 
 const init = () => {
-    createHTML();
     buildTeamMember();
+    beginningHTML();
 };
 
 
@@ -54,7 +43,12 @@ const buildTeamMember = () => {
             },
             {
                 type: 'input',
-                message: "Enter employe's ID number",
+                message: "Enter employee's job title:",
+                name: 'title',
+            },
+            {
+                type: 'input',
+                message: "Enter employee's ID number",
                 name: 'id',
             },
             {
@@ -256,29 +250,6 @@ const closingHTML = () => {
     };   
 };
 
-
-
-
-
-// Below = all if it needs to be reorganized
-
-
-// // Will need to split up since different employee types have different questions??
-// // Function to fire up Inquirer and populate with the questions array
-// const promptUserManager = () => {
-//     console.log('Welcome! Let us get started building your team!');
-//     return inquirer.prompt(managerBuild);
-// }
-
-
-// // Function to initialize the app.
-// const init = () => {
-//   promptUserManager()
-//       .then((userAnswers) => {
-//           const markdown = generateHTML.generateHTML(userAnswers)
-//           writeToFile(markdown)
-//       })
-// };
 
 
 // Function call to initialize the app
