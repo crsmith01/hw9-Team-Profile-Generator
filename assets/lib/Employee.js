@@ -1,4 +1,4 @@
-// Create Employee class
+// Create Employee class - the main class
 class Employee {
     constructor(name, id, email) {
         this.name = name;
@@ -7,15 +7,22 @@ class Employee {
     }
 
     getName() {
+        // returns employee's name
         return this.name;
     }
 
+    getID() {
+        // returns employee's id number
+        return this.id;
+    }
+
     getEmail() {
+        // returns employee's email address
         return this.email;
     }
 
     getRole() {
-        // override to return Employee
+        // returns 'Employee'
         return `Employee`;
     }
 };
