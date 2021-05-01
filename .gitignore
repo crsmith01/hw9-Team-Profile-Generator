@@ -1,5 +1,4 @@
-# Ignores the node_modules folder since developers can easily download it themselves and it does not need to be on GitHub
-node_modules/
+
 
 # Ignores the Desktop Services Store (system file on Mac)
 .DS_Store/

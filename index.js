@@ -5,7 +5,6 @@ const fs = require('fs');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
-const { start } = require('repl');
 
 
 // Empty team array to start, will populate with new employee data when pushed
@@ -112,7 +111,6 @@ const buildTeamMember = () => {
         };
 
            
-
 // I'm breaking down the HTML into 3 sections: beginning (head through part of body), middle (where the team cards go), and closing (rest of body and closing tags).
 const beginningHTML = () => {
     const startHTML = 
@@ -136,11 +134,17 @@ const beginningHTML = () => {
             <h1 class="display-4 d-flex justify-content-center text-warning">My Team</h1>
         </div>
       </div>`
-      // Function to write html file to the output folder
-      fs.writeFile('./output/myteam.html', startHTML, function(err) {
-        // Ternary operator to account for errors and successes
-        err ? console.log('Error! Something went wrong.') : console.log('Success! Your starting html file has been created.');
-      });
+
+      fs.writeFile('./output/myteam.html', startHTML, function (err) {
+        if (err) {
+            console.log(err);
+        };
+      // // Function to write html file to the output folder
+      // fs.writeFile('./output/myteam.html', startHTML, function(err) {
+      //   // Ternary operator to account for errors and successes
+      //   err ? console.log('Error! Something went wrong.') : console.log('Success! Your starting html file has been created.');
+      // });
+
 
 
 // Function to add middle part of html = emplyee cards
@@ -217,11 +221,18 @@ const addEmployeeCardsHTML = (employee) => {
             </div>
           </div>`;
         }
-        fs.appendFile('./output/myteam.html', cardHTML, function(err) {
-            // Ternary operator to account for errors and successes
-            err ? console.log('Error! Something went wrong.') : console.log('Success! The employee section of your html file has been created.');
-          });    
-        })
+
+        fs.appendFile('./output/myteam.html', cardHTML, function (err) {
+          if (err) {
+              return reject(err);
+          };
+          return resolve();
+
+        // fs.appendFile('./output/myteam.html', cardHTML, function(err) {
+        //     // Ternary operator to account for errors and successes
+        //     err ? console.log('Error! Something went wrong.') : console.log('Success! The employee section of your html file has been created.');
+        //   });    
+        // })
 
 }
 
@@ -235,12 +246,19 @@ const closingHTML = () => {
      </body>
      </html>
      `; 
+
+
+     fs.appendFile('./output/myteam.html', endingHTML, function (err) {
+      if (err) {
+          return console.log(err);
+      };
+
     //  Append the closing HTML to myteam.html
     fs.appendFile('./output/myteam.html', endingHTML, function(err) {
     // Ternary operator to account for errors and successes
     err ? console.log('Error! Something went wrong.') : console.log('Success! The html file has been completed.');
     });   
-};
+}
 
 
 // Function to initialize app 
@@ -250,4 +268,4 @@ const init = () => {
 };
 
 // Function call to initialize the app
-init()};
+init()

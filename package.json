@@ -4,23 +4,24 @@
   "description": "## Description",
   "main": "index.js",
   "directories": {
-    "lib": "lib",
-    "test": "tests"
+    "lib": "lib"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/crsmith01/hw9-Team-Profile-Generator.git"
   },
-  "author": "",
+  "author": "Catherine Smith",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/crsmith01/hw9-Team-Profile-Generator/issues"
   },
   "homepage": "https://github.com/crsmith01/hw9-Team-Profile-Generator#readme",
   "dependencies": {
-    "inquirer": "^8.0.0"
-  }
+    "inquirer": "^8.0.0",
+    "jest": "26.6.3"
+  },
+  "devDependencies": {}
 }
