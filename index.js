@@ -10,13 +10,7 @@ const Intern = require('./lib/Intern');
 // Empty team array to start, will populate with new employee data when pushed
 const teamArray = [];
 
-// Function to initialize app 
-const init = () => {
-    buildTeamMember();
-    beginningHTML();
-};
-
-
+// Function to begin build new team members
 const buildTeamMember = () => {
     console.log('Welcome! Let us get started building your team!');
     inquirer
@@ -67,6 +61,7 @@ const buildTeamMember = () => {
             }])
             .then(function({type, name, id, email}) {
                 let roleInformation = "";
+                // Each of the three types of employees has 1 unique feature to them. This let's us get that information in a somewhat succinct way.
                 if (type === 'Manager') {
                     roleInformation = 'office number';
                 } else if (type === 'Engineer'){
@@ -77,6 +72,7 @@ const buildTeamMember = () => {
                 inquirer
                     .prompt([
                         {
+                          // Place to input that category of information unique to each employee type
                             type: 'input',
                             message: `Enter employee's ${roleInformation}:`,
                             name: 'roleInformation',
@@ -86,6 +82,7 @@ const buildTeamMember = () => {
                             message: 'Would you like to add more members to your team?',
                             choices: ['yes', 'no'],
                             name: 'buildMoreTeamMembers',
+                            // Should come back and add some kind of validation / requirement that you have at least another person on the team besides the first one created.
                         }
                 ])
                 .then(function({roleInformation, buildMoreTeamMembers}){
@@ -97,9 +94,11 @@ const buildTeamMember = () => {
                     } else if (type === 'Intern') {
                         addMember = new Intern(name, id, email, roleInformation);
                     }
+                    // Add new member info - first to team array, then to HTML
                     teamArray.push(addMember);
-                    addEmployeeCardsHTML(addMember);
+                    addEmployeeCardsHTML(addMember)
                     .then(function(){
+                      // If user selects 'yes' to the prompt about adding more team members, loop back to start of buildTeamMember() function. Otherwise, run the closingHTML() function.
                         if (buildMoreTeamMembers === 'yes') {
                             buildTeamMember();
                         } else {
@@ -134,15 +133,8 @@ const beginningHTML = () => {
             <h1 class="display-4 d-flex justify-content-center text-warning">My Team</h1>
         </div>
       </div>`
-      // Function to write html file
-// const writeToFile = (userInput) => {
-//     // Writes output of user's answers to a index.html file
-//     // ***Figure out how to create an output folder in which to put index.html 
-//     fs.writeFile('index.html', userInput, (error) =>
-//     // Ternary operator to account for errors and successes
-//     error ? console.log('Error! Something went wrong.') : console.log('Success! Your html file has been created.'));
-// };
-      fs.writeFile('./output/myteam.html', html, function(err) {
+      // Function to write html file to the output folder
+      fs.writeFile('./output/myteam.html', beginningHTML, function(err) {
         // Ternary operator to account for errors and successes
         err ? console.log('Error! Something went wrong.') : console.log('Success! Your starting html file has been created.'));
       };
@@ -155,10 +147,10 @@ const addEmployeeCardsHTML = (employee) => {
         const id = employee.getID();
         const email = employee.getEmail();
         const role = employee.getRole();
-        let cardHTML = "";
+        // Changed from const cardHTML to let cardHTML because it's going to be changed with each option
+        let cardHTML = '';
         if (role === 'Manager') {
             const officeNumber = employee.getOfficeNumber();
-            // go back up and add title prompt if not there already
             const title = employee.getTitle();
             cardHTML =  `
             <div class="col-12 col-sm-6 col-lg-4 mb-3">
@@ -167,14 +159,13 @@ const addEmployeeCardsHTML = (employee) => {
                   <h2 class="card-title">${name}</h5>
                 //   Is this fa working???
                   <h3 class="card-title">Manager<i class="fa fa-address-card-o"></i></h3>
-                  <h3 class="card-title">${type}<i class="fa fa-address-card-o"></i></h3> 
                 </div>
                 <div class="card-body">
                   <ul class="list-group">
                       <li class="list-group-item">Title: ${title}</li>
                       <li class="list-group-item">ID: ${id}</li>
                       <li class="list-group-item">Email: <a href="${email}">${email}</a></lli>
-                      <li class="list-group-item">Office Number: ${office}</a></li>
+                      <li class="list-group-item">Office Number: ${officeNumber}</a></li>
                   </ul>
                 </div>
               </div>
@@ -191,14 +182,13 @@ const addEmployeeCardsHTML = (employee) => {
               <div class="card-header">
                 <h2 class="card-title">${name}</h5>
                 <!-- <h3 class="card-title">Engineer<i class="fa fa-cogs"></i></h3>  -->
-                <h3 class="card-title">${type}<i class="fa fa-cogs"></i></h3> 
               </div>
               <div class="card-body">
                 <ul class="list-group">
                     <li class="list-group-item">Title: ${title}</li>
                     <li class="list-group-item">ID: ${id}</li>
                     <li class="list-group-item">Email: <a href="${email}">${email}</a></li>
-                    <li class="list-group-item">GitHub: <a href="${github}" target="_blank" rel="noopener noreferrer">${github}</a></li>
+                    <li class="list-group-item">GitHub: <a href="https://github.com/${github}" target="_blank" rel="noopener noreferrer">${github}</a></li>
                 </ul>
               </div>
             </div>
@@ -212,28 +202,27 @@ const addEmployeeCardsHTML = (employee) => {
               <div class="card-header">
                 <h2 class="card-title">${name}</h5>
                 <!-- <h3 class="card-title">Intern<i class="fa fa-graduation-cap"></i></h3>  -->
-                <h3 class="card-title">${type}<i class="fa fa-graduation-cap"></i></h3> 
               </div>
               <div class="card-body">
                 <ul class="list-group">
                     <li class="list-group-item">Title: ${title}</li>
                     <li class="list-group-item">ID: ${id}</li>
-                    <li class="list-group-item">Email: <a href="${email}">${email}</a></li>
+                    <li class="list-group-item">Email: <a href="mailto:${email}">${email}</a></li>
                     <li class="list-group-item">School: ${school}</a></li>
                 </ul>
               </div>
             </div>
           </div>`;
         }
-        fs.writeFile('./output/myteam.html', html, function(err) {
+        fs.appendFile('./output/myteam.html', cardHTML, function(err) {
             // Ternary operator to account for errors and successes
-            err ? console.log('Error! Something went wrong.') : console.log('Success! The employee section of your html file has been created.'));
-          };    
+            err ? console.log('Error! Something went wrong.') : console.log('Success! The employee section of your html file has been created.');
+          });    
         })
 
 }
 
-
+// Function to create the closing html
 const closingHTML = () => {
     const endingHTML = `
       </section>
@@ -244,13 +233,18 @@ const closingHTML = () => {
      </html>
      `; 
     //  Append the closing HTML to myteam.html
-    fs.appendFile('./output/myteam.html', html, function(err) {
+    fs.appendFile('./output/myteam.html', endingHTML, function(err) {
     // Ternary operator to account for errors and successes
-    err ? console.log('Error! Something went wrong.') : console.log('Success! The html file has been completed.'));
-    };   
+    err ? console.log('Error! Something went wrong.') : console.log('Success! The html file has been completed.');
+    });   
 };
 
 
+// Function to initialize app 
+const init = () => {
+  buildTeamMember();
+  beginningHTML();
+};
 
 // Function call to initialize the app
 init();
