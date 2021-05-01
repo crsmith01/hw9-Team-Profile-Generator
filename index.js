@@ -71,7 +71,7 @@ const buildTeamMember = () => {
                     return 'Invalid email address. Please enter a valid email address (in the form of ___@__.___).'
                 },
             }])
-            .then(function({type, name, id, email})){
+            .then(function({type, name, id, email}) {
                 let roleInformation = "";
                 if (type === 'Manager') {
                     roleInformation = 'office number';
@@ -86,7 +86,7 @@ const buildTeamMember = () => {
                             type: 'input',
                             message: `Enter employee's ${roleInformation}:`,
                             name: 'roleInformation',
-                        }
+                        },
                         {
                             type: 'list',
                             message: 'Would you like to add more members to your team?',
