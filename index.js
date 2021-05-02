@@ -140,7 +140,9 @@ const beginningHTML = () => {
       .header{
           width: 100%;
       }
-      
+      h1{
+        width: 100%;
+      }
       .header-text{
           font-family: 'Times New Roman', Times, serif;
           text-align: center;
@@ -203,7 +205,6 @@ const addEmployeeCardsHTML = (employee) => {
             <div class="card mx-auto mb-3" style="width: 14rem">
                 <div class="card-header">
                   <h2 class="card-title">${name}</h5>
-                //   Is this fa working???
                   <h3 class="card-title">Manager<i class="fa fa-address-card-o"></i></h3>
                 </div>
                 <div class="card-body">

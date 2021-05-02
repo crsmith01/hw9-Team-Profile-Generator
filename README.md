@@ -59,12 +59,17 @@ GIVEN a command-line application that accepts user input:
 
 ## Mock-Up
 
-The following image shows a mock-up of the generated HTML’s appearance and functionality:
+The following image shows a mock-up of the generated HTML’s appearance and functionality.:
 
-![HTML webpage titled “My Team” features five boxes listing employee names, titles, and other key info.](./______________)
+![HTML webpage titled “My Team” features three boxes listing employee names, titles, and other key info.](./assets/images/blank_html.png)
+**Note: I messed up some of the styling while fixing functionality. I've run out of time for tonight, but I will work on this in the next couple days.
+
+The following video showcases the web application's appearance and functionality:
+[video demonstration](https://drive.google.com/file/d/1sgYPOWOczPEDqhDtD04E-ZC4__fIqTpU/view)
 
 ## Tests
 Tests were written with jest. To run tests, enter the following in your command-line: npm run test
+**Note: Not all tests currently pass (hence some results being undefined). I've run out of time for tonight, but I will work on this in the next couple days.
 
 ## Contact
 If you have any questions about the repo, contact me at [crsmith01](https://github.com/crsmith01).
