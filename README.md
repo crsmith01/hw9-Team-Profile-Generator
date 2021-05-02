@@ -23,6 +23,7 @@ This is a Node.js command-line application that takes in information about emplo
 4. Bootstrap
 5. HTML
 6. Jest
+7. CSS
 ```
 
 
